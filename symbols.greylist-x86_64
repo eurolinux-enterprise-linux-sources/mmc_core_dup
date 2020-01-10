@@ -1,6 +1,5 @@
 debugfs_create_x32
 debugfs_remove_recursive
-find_module
 led_trigger_event
 led_trigger_register_simple
 led_trigger_unregister_simple

@@ -1,13 +1,13 @@
 %define kmod_name		mmc_core_dup
 %define kmod_driver_version	0.1_rh1
 %define kmod_rpm_release	1
-%define kmod_git_hash		d9e3920ac40970a4164c889996ec7c25523afe1c
-%define kmod_kernel_version	2.6.32-431.el6
-%define kernel_version		2.6.32-431.el6
+%define kmod_git_hash		bcc659bfd690a3611633ab3137778a756ae69798
+%define kmod_kernel_version	2.6.32-504.el6
+%define kernel_version		2.6.32-504.el6
 %define kmod_kbuild_dir		drivers/mmc/core/
 
 
-%{!?dist: %define dist .el6}
+%{!?dist: %define dist .el6_6}
 
 Source0:	%{kmod_name}-%{kmod_driver_version}.tar.bz2			
 Source1:	%{kmod_name}.files			
@@ -32,7 +32,7 @@ Group:		System/Kernel
 License:	GPLv2
 URL:		http://www.kernel.org/
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
-BuildRequires:	%kernel_module_package_buildreqs
+BuildRequires:	%kernel_module_package_buildreqs kernel-devel = %kmod_kernel_version
 ExclusiveArch:  i686 x86_64
 
 
@@ -105,5 +105,6 @@ fi
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
-* Sun Aug 17 2014 Weiping Pan <wpan@redhat.com> 0.1_rh1 1
+* Mon Jun 29 2015 Petr Oros <poros@redhat.com> 0.1_rh1 1
 - mmc_core_dup DUP module
+- Resolves: #1238201
